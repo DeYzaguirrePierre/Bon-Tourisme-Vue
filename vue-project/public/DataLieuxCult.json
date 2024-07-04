@@ -1,0 +1,23 @@
+[
+    {
+        "id": 1,
+        "titre": "Lieux 1",
+        "image": "/images/eglise.jpg",
+        "description": "Ceci est une courte description pour le lieux 1, on verra ce que je marque ici.",
+        "link": "#"
+    },
+    {
+        "id": 2,
+        "titre": "Lieux 2",
+        "image": "/images/fort.jpg",
+        "description": "Ceci est une courte description pour le lieux 2, on verra ce que je marque ici.",
+        "link": "#"
+    },
+    {
+        "id": 3,
+        "titre": "Lieux 3",
+        "image": "/images/infante.jpg",
+        "description": "Ceci est une courte description pour le lieux 3, on verra ce que je marque ici.",
+        "link": "#"
+    }
+]
