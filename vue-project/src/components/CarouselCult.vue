@@ -1,7 +1,7 @@
 <template>
-  <Carousel :itemsToShow="3.95" :wrapAround="true" :transition="500" class="my-10">
+  <Carousel :itemsToShow="3.95" :wrapAround="true" :transition="500" class="my-10 py-10 overflow-visible test">
     <Slide v-for="lieu in lieux" :key="lieu.id">
-      <div class="card text-center bg-[cyan]">
+      <div class="card text-center bg-[cyan] h-max">
         <h2 class="card-title">{{ lieu.titre }}</h2>
         <img :src="lieu.image" class="mx-auto" />
         <div class="card-content">
@@ -50,16 +50,13 @@ export default defineComponent({
 </script>
 
 <style scoped>
-.carousel__slide {
-  padding-left: 25px;
+
+.test {
+  border: solid 1px green;
 }
 
 .carousel__viewport {
   perspective: 2000px;
-}
-
-.carousel__track {
-  transform-style: preserve-3d;
 }
 
 .carousel__slide--sliding {
@@ -68,25 +65,25 @@ export default defineComponent({
 
 .carousel__slide {
   opacity: 0.9;
-  transform: rotateY(-20deg) scale(1);
-}
-
-.carousel__slide--active~.carousel__slide {
-  transform: rotateY(20deg) scale(1);
+  transform: scale(0.7);
 }
 
 .carousel__slide--prev {
   opacity: 1;
-  transform: rotateY(-10deg) scale(1);
-}
-
-.carousel__slide--next {
-  opacity: 1;
-  transform: rotateY(10deg) scale(1);
+  transform: scale(0.85);
 }
 
 .carousel__slide--active {
   opacity: 1;
-  transform: rotateY(0) scale(1);
+  transform: scale(1);
+}
+
+.carousel__slide--next {
+  opacity: 1;
+  transform: scale(0.85) !important;
+}
+
+.carousel__slide--active~.carousel__slide {
+  transform: scale(0.7);
 }
 </style>

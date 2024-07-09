@@ -1,13 +1,17 @@
 <script setup>
-import CarouselTest from './components/CarouselTest.vue'
-import Header from './components/Header.vue'
+import Header from "./components/Header.vue";
+import CarouselCult from "./components/CarouselCult.vue";
+
 </script>
 
 <template>
+
   <Header />
-  <CarouselTest />
+  <CarouselCult />
+
 </template>
 
 <style scoped>
+
 
 </style>
