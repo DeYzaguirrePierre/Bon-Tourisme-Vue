@@ -6,9 +6,9 @@
                 <div class="flex-1"></div>
                 <!-- BLOC LOGO -->
                 <div class="flex flex-col justify-center items-center w-full md:w-auto">
-                    <div class="flex flex-row justify-center md:-mt-10">
+                    <RouterLink to="/" class="flex flex-row justify-center md:-mt-10">
                         <img src="/images/Logo_Transparent.png" alt="Logo Bon Tourisme" class="w-32 md:w-auto" />
-                    </div>
+                    </RouterLink>
                     <div class="flex flex-row justify-center mt-2 md:-mt-10">
                         <h1 class="oneLine text-[#763538] italic font-extralight opacity-75 text-center">
                             Ne plus être déçu est notre façon de profiter

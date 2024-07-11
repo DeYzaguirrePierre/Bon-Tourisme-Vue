@@ -1,0 +1,23 @@
+[
+    {
+        "id": 1,
+        "titre": "Restos 1",
+        "image": "/images/cocktail.jpg",
+        "description": "Ceci est une courte description pour le resto 1, on verra ce que je marque ici.",
+        "link": "#"
+    },
+    {
+        "id": 2,
+        "titre": "Restos 2",
+        "image": "/images/resto.jpg",
+        "description": "Ceci est une courte description pour le resto 2, on verra ce que je marque ici.",
+        "link": "#"
+    },
+    {
+        "id": 3,
+        "titre": "Restos 3",
+        "image": "/images/gateau.jpg",
+        "description": "Ceci est une courte description pour le resto 3, on verra ce que je marque ici.",
+        "link": "#"
+    }
+]

@@ -1,17 +1,21 @@
 <script setup>
-import Header from "./components/Header.vue";
-import CarouselCult from "./components/CarouselCult.vue";
-
+import { RouterLink, RouterView } from 'vue-router'
+import NavBar from './components/NavBar.vue'
+import FooterCopyright from './components/FooterCopyright.vue'
 </script>
 
 <template>
-
-  <Header />
-  <CarouselCult />
-
+  <header>
+    <NavBar />
+  </header>
+<main>
+  <RouterView />
+</main>
+<footer>
+  <FooterCopyright />
+</footer>
 </template>
 
 <style scoped>
-
 
 </style>

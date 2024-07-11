@@ -1,28 +1,25 @@
 <template>
-  <section class="relative mb-10 md:my-10 bg-[#763538] bg-opacity-50 rounded-3xl">
-
-    <RouterLink to="/cultExtand" class="absolute z-10 top-1 right-1 hover:text-white md:top-4 md:right-4 md:rounded-md md:bg-[#763538] md:text-white md:hover:bg-white md:hover:text-[#763538] px-5 py-2.5 text-sm font-medium"
+<section class="relative mb-10 md:my-10 bg-[#763538] bg-opacity-50 rounded-3xl">
+  <a class="absolute z-10 top-1 right-1 hover:text-white md:top-4 md:right-4 md:rounded-md md:bg-[#763538] md:text-white md:hover:bg-white md:hover:text-[#763538] px-5 py-2.5 text-sm font-medium"
       href="#">
       En voir plus ...
-    </RouterLink>
+    </a>
     <h1 class="oneLine italic font-extralight opacity-75 text-center py-10">
-      Les Lieux Culturels
+      Les Lieux Gastronomiques
     </h1>
-    <Carousel :itemsToShow="itemsToShow" :wrapAround="true" :transition="500" class="pb-10">
-      <Slide v-for="lieu in lieux" :key="lieu.id">
-        <div class="card text-center bg-[cyan] h-max">
-          <h2 class="card-title">{{ lieu.titre }}</h2>
-          <img :src="lieu.image" class="mx-auto" />
-          <div class="card-content">
-            <p>{{ lieu.description }}</p>
-            <a :href="lieu.link" class="button">En Savoir plus ...</a>
-          </div>
+  <Carousel :itemsToShow="itemsToShow" :wrapAround="true" :transition="500" class="pb-10">
+    <Slide v-for="resto in restos" :key="resto.id">
+      <div class="card text-center bg-[cyan] h-max mx-3">
+        <h2 class="card-title">{{ resto.titre }}</h2>
+        <img :src="resto.image" class="mx-auto" />
+        <div class="card-content">
+          <p>{{ resto.description }}</p>
+          <a :href="resto.link" class="button">En Savoir plus ...</a>
         </div>
-      </Slide>
-
-      ...
-    </Carousel>
-  </section>
+      </div>
+    </Slide>
+  </Carousel>
+</section>
 </template>
 
 <script>
@@ -38,7 +35,7 @@ export default defineComponent({
   },
   data() {
     return {
-      lieux: [],
+      restos: [],
       itemsToShow: 3.95, /* Valeur par défault du items show */
     };
   },
@@ -53,8 +50,8 @@ export default defineComponent({
   methods: {
     async fetchData() {
       try {
-        const response = await axios.get('/DataLieux.json');
-        this.lieux = response.data;
+        const response = await axios.get('/DataRestos.json'); /* Appel du tableau de donnée du Json */
+        this.restos = response.data;
       } catch (error) {
         console.error(error);
       }
@@ -67,6 +64,7 @@ export default defineComponent({
 </script>
 
 <style scoped>
+
 .carousel__viewport {
   perspective: 2000px;
 }
