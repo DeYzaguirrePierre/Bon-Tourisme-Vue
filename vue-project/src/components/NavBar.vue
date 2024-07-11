@@ -19,12 +19,12 @@
                 <div
                     class="absolute top-2 right-4 md:relative md:top-0 md:right-0 md:flex-1 md:flex md:justify-end md:self-start flex items-center gap-4 mt-4 md:mt-0">
                     <div class="flex gap-4">
-                        <a class="rounded-md bg-[#763538] px-5 py-2.5 text-sm font-medium invisible md:visible md:hover:bg-white md:hover:text-[#763538]"
+                        <a class="rounded-md bg-[#763538] px-5 py-2.5 text-sm font-medium invisible md:visible md:hover:bg-white md:hover:text-[#763538] transition-colors"
                             href="#">
                             S'enregistrer
                         </a>
                         <div class="flex gap-4 z-10">
-                            <a class="rounded-md bg-[#763538] text-white hover:bg-white hover:text-[#763538] px-5 py-2.5 text-sm font-medium"
+                            <a class="rounded-md bg-[#763538] text-white hover:bg-white hover:text-[#763538] px-5 py-2.5 text-sm font-medium transition-colors"
                                 href="#">
                                 Connection
                             </a>

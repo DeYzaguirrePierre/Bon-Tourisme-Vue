@@ -1,6 +1,5 @@
 <template>
   <section class="relative mb-10 md:my-10 bg-[#763538] bg-opacity-50 rounded-3xl">
-
     <RouterLink to="/cultExtand" class="absolute z-10 top-1 right-1 hover:text-white md:top-4 md:right-4 md:rounded-md md:bg-[#763538] md:text-white md:hover:bg-white md:hover:text-[#763538] px-5 py-2.5 text-sm font-medium"
       href="#">
       En voir plus ...
@@ -10,17 +9,14 @@
     </h1>
     <Carousel :itemsToShow="itemsToShow" :wrapAround="true" :transition="500" class="pb-10">
       <Slide v-for="lieu in lieux" :key="lieu.id">
-        <div class="card text-center bg-[cyan] h-max">
-          <h2 class="card-title">{{ lieu.titre }}</h2>
-          <img :src="lieu.image" class="mx-auto" />
-          <div class="card-content">
-            <p>{{ lieu.description }}</p>
-            <a :href="lieu.link" class="button">En Savoir plus ...</a>
+        <div class="relative text-center rounded-lg overflow-hidden w-64 h-48"> <!-- 256*192 respect format 4/3 pour format 16/9 passer 192 -> 144 -->
+          <img :src="lieu.image" class="w-full h-48 object-cover" />
+          <div class="absolute bottom-0 left-0 right-0 bg-opacity-75 bg-black text-white py-2 text-center">
+            <h2 class="text-xl font-bold">{{ lieu.titre }}</h2>
+            <a :href="lieu.link" class="mt-2 inline-block bg-[#763538] text-white rounded-md py-2 px-4 hover:bg-white hover:text-[#763538] transition-colors">En Savoir plus ...</a>
           </div>
         </div>
       </Slide>
-
-      ...
     </Carousel>
   </section>
 </template>
@@ -39,7 +35,7 @@ export default defineComponent({
   data() {
     return {
       lieux: [],
-      itemsToShow: 3.95, /* Valeur par défault du items show */
+      itemsToShow: 5.95, /* Valeur par défault du items show */
     };
   },
   mounted() {
@@ -60,7 +56,7 @@ export default defineComponent({
       }
     },
     updateItemsToShow() {
-      this.itemsToShow = window.innerWidth < 768 ? 1 : 3.95; /* Affiche un seul Element dans le carousel quand screen < 768px */
+      this.itemsToShow = window.innerWidth < 768 ? 1 : 5.95; /* Affiche un seul Element dans le carousel quand screen < 768px */
     }
   },
 })
@@ -99,3 +95,4 @@ export default defineComponent({
   transform: scale(0.7);
 }
 </style>
+

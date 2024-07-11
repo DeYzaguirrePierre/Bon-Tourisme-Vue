@@ -4,6 +4,7 @@ import CarouselResto from "../components/CarouselResto.vue"
 </script>
 
 <template>
+
   <main>
     <CarouselCult />
     <CarouselResto />

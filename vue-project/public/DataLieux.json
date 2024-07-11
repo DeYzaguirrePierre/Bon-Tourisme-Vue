@@ -19,5 +19,26 @@
         "image": "/images/infante.jpg",
         "description": "Ceci est une courte description pour le lieux 3, on verra ce que je marque ici.",
         "link": "#"
+    },
+    {
+        "id": 4,
+        "titre": "Lieux 4",
+        "image": "/images/maisonL14.jpg",
+        "description": "Ceci est une courte description pour le lieux 4, on verra ce que je marque ici.",
+        "link": "#"
+    },
+    {
+        "id": 5,
+        "titre": "Lieux 5",
+        "image": "/images/port.jpg",
+        "description": "Ceci est une courte description pour le lieux 5, on verra ce que je marque ici.",
+        "link": "#"
+    },
+    {
+        "id": 6,
+        "titre": "Lieux 6",
+        "image": "/images/imgtest.jpg",
+        "description": "Ceci est une courte description pour le lieux 6, on verra ce que je marque ici.",
+        "link": "#"
     }
 ]

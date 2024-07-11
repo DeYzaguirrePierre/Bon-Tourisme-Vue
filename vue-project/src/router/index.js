@@ -1,6 +1,6 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import HomeView from '../views/HomeView.vue'
-import CarouselCultExtand from '../components/CarouselCultExtand.vue'
+import HomeCultExtand from '../views/HomeCultExtand.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -12,8 +12,8 @@ const router = createRouter({
     },
     {
       path: '/cultExtand',
-      name: 'cultExtand',
-      component: CarouselCultExtand
+      name: 'HomeCultExtand',
+      component: HomeCultExtand
     }
   ]
 })
