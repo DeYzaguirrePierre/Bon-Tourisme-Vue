@@ -9,7 +9,7 @@
     </h1>
     <Carousel :itemsToShow="itemsToShow" :wrapAround="true" :transition="500" class="pb-10">
       <Slide v-for="lieu in lieux" :key="lieu.id">
-        <div class="relative text-center rounded-lg overflow-hidden w-64 h-48"> <!-- 256*192 respect format 4/3 pour format 16/9 passer 192 -> 144 -->
+        <div class="relative text-center rounded-lg overflow-hidden w-64 h-48" > <!-- 256*192 respect format 4/3 pour format 16/9 passer 192 -> 144 -->
           <img :src="lieu.image" class="w-full h-48 object-cover" />
           <div class="absolute bottom-0 left-0 right-0 bg-opacity-75 bg-black text-white py-2 text-center">
             <h2 class="text-xl font-bold">{{ lieu.titre }}</h2>
@@ -50,13 +50,22 @@ export default defineComponent({
     async fetchData() {
       try {
         const response = await axios.get('/DataLieux.json');
-        this.lieux = response.data;
+        this.lieux = this.getRandomLieux(response.data, 10);
       } catch (error) {
         console.error(error);
       }
     },
+    getRandomLieux(lieux, count) {
+      // Mélange le tableau des lieux
+      for (let i = lieux.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [lieux[i], lieux[j]] = [lieux[j], lieux[i]];
+      }
+      // Retourne les 'count' premiers éléments
+      return lieux.slice(0, count);
+    },
     updateItemsToShow() {
-      this.itemsToShow = window.innerWidth < 768 ? 1 : 5.95; /* Affiche un seul Element dans le carousel quand screen < 768px */
+      this.itemsToShow = window.innerWidth < 768 ? 1 : 5.95; /* Affiche un seul élément dans le carousel quand screen < 768px */
     }
   },
 })

@@ -1,6 +1,6 @@
 <template>
   <section class="relative mb-10 md:my-10 bg-[#763538] bg-opacity-50 rounded-3xl">
-    <RouterLink to="/cultExtand" class="absolute z-10 top-1 right-1 hover:text-white md:top-4 md:right-4 md:rounded-md md:bg-[#763538] md:text-white md:hover:bg-white md:hover:text-[#763538] px-5 py-2.5 text-sm font-medium">
+    <RouterLink to="/restoExtand" class="absolute z-10 top-1 right-1 hover:text-white md:top-4 md:right-4 md:rounded-md md:bg-[#763538] md:text-white md:hover:bg-white md:hover:text-[#763538] px-5 py-2.5 text-sm font-medium">
         En voir plus ...
     </RouterLink>
     <h1 class="oneLine italic font-extralight opacity-75 text-center py-10">
@@ -49,10 +49,19 @@
       async fetchData() {
         try {
           const response = await axios.get('/DataRestos.json'); /* Appel du tableau de données du JSON */
-          this.restos = response.data;
+          this.restos = this.getRandomRestos(response.data, 10);
         } catch (error) {
           console.error(error);
         }
+      },
+      getRandomRestos(restos, count) {
+        // Mélange le tableau des restos
+        for (let i = restos.length - 1; i > 0; i--) {
+          const j = Math.floor(Math.random() * (i + 1));
+          [restos[i], restos[j]] = [restos[j], restos[i]];
+        }
+        // Retourne les 'count' premiers éléments
+        return restos.slice(0, count);
       },
       updateItemsToShow() {
         this.itemsToShow = window.innerWidth < 768 ? 1 : 5.95; /* Affiche un seul élément dans le carousel quand screen < 768px */
