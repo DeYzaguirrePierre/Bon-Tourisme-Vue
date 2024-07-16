@@ -1,11 +1,17 @@
 <template>
   <section class="mb-10 md:my-10 bg-[#763538] bg-opacity-50 rounded-3xl p-6">
-    <h1 class="oneLine italic font-extralight opacity-75 text-center mb-6">
-      Les Lieux Gastronomiques
-    </h1>
+    <div class="flex justify-between items-center mb-6">
+      <h1 class="oneLine italic font-extralight opacity-75 text-center mx-auto">
+        Les Lieux Gastronomiques
+      </h1>
+      <div>
+        <button v-if="!isSearching" @click="isSearching = true" class="bg-[#763538] text-white rounded-md py-2 px-4 hover:bg-white hover:text-[#763538] transition-colors">Rechercher</button>
+        <input v-if="isSearching" v-model="searchQuery" @blur="isSearching = false" placeholder="Saisir votre recherche" class="bg-white text-black rounded-md p-2 px-4 w-60 transition-all border border-gray-300 duration-300 ease-in-out" />
+      </div>
+    </div>
     
     <Carousel id="gallery" :items-to-show="1" :wrap-around="false" v-model="currentSlide" class="my-4">
-      <Slide v-for="resto in restos" :key="resto.id">
+      <Slide v-for="resto in filteredRestos" :key="resto.id">
         <div class="flex flex-col md:flex-row text-center mx-auto max-w-4xl p-4">
           <div class="md:w-1/2 p-4">
             <h2 class="card-title text-2xl font-bold mb-4">{{ resto.titre }}</h2>
@@ -19,8 +25,8 @@
       </Slide>
     </Carousel>
 
-    <Carousel id="thumbnails" :items-to-show="itemsToShow" :wrap-around="true" v-model="currentSlide" ref="carousel" class="mt-4">
-      <Slide v-for="resto in restos" :key="resto.id">
+    <Carousel id="thumbnails" :items-to-show="actualItemsToShow" :wrap-around="true" v-model="currentSlide" ref="carousel" class="mt-4">
+      <Slide v-for="resto in filteredRestos" :key="resto.id">
         <div class="carousel__item cursor-pointer" @click="slideTo(resto.id - 1)">
           <div class="relative text-center rounded-lg overflow-hidden w-32 h-24 mx-auto">
             <img :src="resto.image" class="w-full h-full object-cover" />
@@ -49,8 +55,20 @@ export default defineComponent({
     return {
       restos: [],
       currentSlide: 0,
-      itemsToShow: 5.95
+      itemsToShow: 5.95,
+      isSearching: false,
+      searchQuery: ''
     };
+  },
+  computed: {
+    filteredRestos() {
+      return this.restos.filter(resto => 
+        resto.titre.toLowerCase().includes(this.searchQuery.toLowerCase())
+      );
+    },
+    actualItemsToShow() {
+      return this.filteredRestos.length < this.itemsToShow ? this.filteredRestos.length : this.itemsToShow;
+    }
   },
   mounted() {
     this.fetchData();

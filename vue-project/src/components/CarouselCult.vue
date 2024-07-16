@@ -65,7 +65,7 @@ export default defineComponent({
       return lieux.slice(0, count);
     },
     updateItemsToShow() {
-      this.itemsToShow = window.innerWidth < 768 ? 1 : 5.95; /* Affiche un seul élément dans le carousel quand screen < 768px */
+      this.itemsToShow = window.innerWidth < 768 ? 1.45 : 5.95; /* Affiche un seul élément dans le carousel quand screen < 768px */
     }
   },
 })

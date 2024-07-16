@@ -7,6 +7,13 @@
         "link": "#"
     },
     {
+        "id": 25,
+        "titre": "Lieux 25",
+        "image": "/images/fort.jpg",
+        "description": "Ceci est une courte description pour le lieux 25, on verra ce que je marque ici.",
+        "link": "#"
+    },
+    {
         "id": 2,
         "titre": "Lieux 2",
         "image": "/images/fort.jpg",
