@@ -1,19 +1,36 @@
 <template>
-  <section class="relative mb-10 md:my-10 bg-[#763538] bg-opacity-50 rounded-3xl">
-    <RouterLink to="/cultExtand" class="absolute z-10 top-1 right-1 hover:text-white md:top-4 md:right-4 md:rounded-md md:bg-[#763538] md:text-white md:hover:bg-white md:hover:text-[#763538] px-5 py-2.5 text-sm font-medium"
-      href="#">
+  <section class="relative mb-10 md:my-10">
+    <RouterLink
+      to="/cultExtand"
+      class="absolute z-10 top-1 right-1 text-[#763538] hover:text-white md:top-4 md:right-4 md:rounded-md md:bg-[#763538] md:text-white md:hover:bg-white md:hover:text-[#763538] md:border border-[#763538] px-5 py-2.5 text-sm font-medium"
+      href="#"
+    >
       En voir plus ...
     </RouterLink>
-    <h1 class="oneLine italic font-extralight opacity-75 text-center py-10">
+    <h1
+      class="oneLine italic font-extralight opacity-75 text-center py-10 text-[#763538]"
+    >
       Les Lieux Culturels
     </h1>
-    <Carousel :itemsToShow="itemsToShow" :wrapAround="true" :transition="500" class="pb-10">
+    <Carousel
+      :itemsToShow="itemsToShow"
+      :wrapAround="true"
+      :transition="500"
+      class="pb-10"
+    >
       <Slide v-for="lieu in lieux" :key="lieu.id">
-        <div class="relative text-center rounded-lg overflow-hidden w-64 h-48" > <!-- 256*192 respect format 4/3 pour format 16/9 passer 192 -> 144 -->
+        <div class="relative text-center rounded-lg overflow-hidden w-64 h-48">
+          <!-- 256*192 respect format 4/3 pour format 16/9 passer 192 -> 144 -->
           <img :src="lieu.image" class="w-full h-48 object-cover" />
-          <div class="absolute bottom-0 left-0 right-0 bg-opacity-75 bg-black text-white py-2 text-center">
+          <div
+            class="absolute bottom-0 left-0 right-0 bg-opacity-75 bg-[#763538] text-white py-2 text-center"
+          >
             <h2 class="text-xl font-bold">{{ lieu.titre }}</h2>
-            <a :href="lieu.link" class="mt-2 inline-block bg-[#763538] text-white rounded-md py-2 px-4 hover:bg-white hover:text-[#763538] transition-colors">En Savoir plus ...</a>
+            <a
+              :href="lieu.link"
+              class="mt-2 inline-block border border-[#763538] bg-[#763538] text-white rounded-md py-2 px-4 hover:bg-white hover:text-[#763538] transition-colors"
+              >En Savoir plus ...</a
+            >
           </div>
         </div>
       </Slide>
@@ -22,10 +39,10 @@
 </template>
 
 <script>
-import { defineComponent } from 'vue'
-import { Carousel, Slide } from 'vue3-carousel'
-import axios from 'axios'
-import 'vue3-carousel/dist/carousel.css'
+import { defineComponent } from "vue";
+import { Carousel, Slide } from "vue3-carousel";
+import axios from "axios";
+import "vue3-carousel/dist/carousel.css";
 
 export default defineComponent({
   components: {
@@ -35,21 +52,27 @@ export default defineComponent({
   data() {
     return {
       lieux: [],
-      itemsToShow: 5.95, /* Valeur par défault du items show */
+      itemsToShow: 5.95 /* Valeur par défault du items show */,
     };
   },
   mounted() {
     this.fetchData();
     this.updateItemsToShow();
-    window.addEventListener('resize', this.updateItemsToShow); /* Mise a jour auto de l item shown */
+    window.addEventListener(
+      "resize",
+      this.updateItemsToShow
+    ); /* Mise a jour auto de l item shown */
   },
   beforeUnmount() {
-    window.removeEventListener('resize', this.updateItemsToShow); /* supprime l'écouteur d'événement lorsque le composant */
+    window.removeEventListener(
+      "resize",
+      this.updateItemsToShow
+    ); /* supprime l'écouteur d'événement lorsque le composant */
   },
   methods: {
     async fetchData() {
       try {
-        const response = await axios.get('/DataLieux.json');
+        const response = await axios.get("/DataLieux.json");
         this.lieux = this.getRandomLieux(response.data, 10);
       } catch (error) {
         console.error(error);
@@ -65,10 +88,13 @@ export default defineComponent({
       return lieux.slice(0, count);
     },
     updateItemsToShow() {
-      this.itemsToShow = window.innerWidth < 768 ? 1.45 : 5.95; /* Affiche un seul élément dans le carousel quand screen < 768px */
-    }
+      this.itemsToShow =
+        window.innerWidth < 768
+          ? 1.95
+          : 5.95; /* Affiche un seul élément dans le carousel quand screen < 768px */
+    },
   },
-})
+});
 </script>
 
 <style scoped>
@@ -100,8 +126,7 @@ export default defineComponent({
   transform: scale(0.85) !important;
 }
 
-.carousel__slide--active~.carousel__slide {
+.carousel__slide--active ~ .carousel__slide {
   transform: scale(0.7);
 }
 </style>
-
